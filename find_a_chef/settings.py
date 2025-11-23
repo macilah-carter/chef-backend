@@ -65,8 +65,12 @@ WSGI_APPLICATION = 'find_a_chef.wsgi.application'
 
 # DATABASE – Render PostgreSQL
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL', ''))
+    "default": dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        conn_max_age=600
+    )
 }
+
 
 # AUTH
 AUTH_USER_MODEL = 'core.User'

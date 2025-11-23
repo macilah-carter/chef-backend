@@ -3,7 +3,7 @@ services:
     name: find-a-chef-api
     env: python
     region: ohio
-    buildCommand: "pip install -r requirements.txt"
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
     startCommand: "gunicorn find_a_chef.wsgi:application"
     envVars:
       - key: DJANGO_SECRET_KEY
