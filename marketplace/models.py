@@ -3,11 +3,11 @@ from django.conf import settings
 
 
 class Chef(models.Model):
-    bio = models.TextField()
-    specialties = models.CharField(max_length=255)
-    experience_years = models.PositiveIntegerField()
-    rate_per_event = models.DecimalField(max_digits=10, decimal_places=2)
-    location = models.CharField(max_length=255)
+    bio = models.TextField(blank=True, null=True)
+    specialties = models.CharField(max_length=255, blank=True, null=True)
+    experience_years = models.PositiveIntegerField(blank=True, null=True)
+    rate_per_event = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    location = models.CharField(max_length=255, blank=True, null=True)
     availability = models.BooleanField(default=True)
     
     user = models.OneToOneField(  # one chef = one user
