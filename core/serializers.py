@@ -10,7 +10,6 @@ class UserSerializer(BaseUserRegistrationSerializer):
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 'role', 'phone_number']
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
-
     def validate(self, attrs):
         data = super().validate(attrs)
         data['user_role'] = self.user.role
