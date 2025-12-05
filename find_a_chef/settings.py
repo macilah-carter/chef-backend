@@ -71,7 +71,6 @@ DATABASES = {
     )
 }
 
-
 # AUTH
 AUTH_USER_MODEL = 'core.User'
 
@@ -111,10 +110,19 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
 }
 
-# DJOSER
+
+
 DJOSER = {
+    "SEND_ACTIVATION_EMAIL": False,       # <-- ADDED
+    "SEND_CONFIRMATION_EMAIL": False,     # <-- ADDED
+
     "SERIALIZERS": {
         "user_create": "core.serializers.UserCreateSerializer",
         "current_user": "core.serializers.UserSerializer",
-    }
+    },
 }
+
+
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"  # <-- ADDED
+
